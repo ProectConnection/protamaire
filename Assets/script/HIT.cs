@@ -23,7 +23,7 @@ public class HIT : MonoBehaviour {
         {
             kagocnt++;
             Destroy(this.gameObject);
-            Debug.Log(kagocnt);
+            //Debug.Log(kagocnt);
             playermove.rscore += 10;
         }
        
