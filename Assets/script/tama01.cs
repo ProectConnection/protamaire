@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class tama01 : MonoBehaviour {
     // Use this for initialization
     int i;
+    
     int rcnt;
     public static bool rflg;
     void Start () {
@@ -25,17 +26,19 @@ public class tama01 : MonoBehaviour {
             
             for (i = playermove.i,rcnt=0; rcnt < 5; i++,rcnt++)
             {
-                if (i >= 5)
-                {
-                    i = 0;
-                }
-                if (playermove.axes[i] == 0)
-                {
-                    playermove.axes[i] = 1;
-                    playermove.bulletcnt++;
-                    break;
-                }
               
+                    if (i >= 5)
+                    {
+                        i = 0;
+                        
+                    }
+                    if (playermove.axes[i] == 0 )
+                    {
+                        playermove.axes[i] = 1;
+                        playermove.bulletcnt++;
+                        break;
+                    }
+                
             }
             Destroy(this.gameObject);
            // Debug.Log(playermove.Ecnt);

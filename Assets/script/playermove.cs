@@ -5,40 +5,41 @@ using UnityEngine.UI;
 
 
 public class playermove : MonoBehaviour
-{
+{ 
     //弾のオブジェクト、弾数
     public GameObject bullet;//弾のオブジェクト
     public GameObject bullet2;//弾のオブジェクト
     public GameObject bullet3;//弾のオブジェクト
     public static float bulletcnt;//弾の所持数
-    /*public static float Ecnt;//弾の所持数
-    public static float bcnt;//弾の所持数
-    public static float ycnt;//弾の所持数*/
-
+   
     //配列
     private static GameObject[] ren = new GameObject[5];
-    public static int i;
+    public static int i,j;
     public static int[] axes = new int[5];
     //スコアのテキスト
     public Text redtext;
     public static int rscore = 0;
     public Text bluetext;
     public static int bscore = 0;
-    public Text yellowtext;
+    public  Text yellowtext;
     public static int yscore = 0;
+
+
     // Use this for initialization
     void Start()
     {
         i = 0;
+        j = 0;
         bulletcnt = 0;//バレット数の初期化
         redtext.text = "redscore:0";
         bluetext.text = "bluescore:0";
         yellowtext.text = "yellowscore:0";
+        
     }
-
     // Update is called once per frame
     void Update()
     {
+
         redtext.text = "Redscore:" + rscore.ToString();
         bluetext.text = "Bluescore:" + bscore.ToString();
         yellowtext.text = "Yellowscore:" + yscore.ToString();
@@ -48,7 +49,6 @@ public class playermove : MonoBehaviour
         float ry = Input.GetAxis("Fire1");//左右矢印でカメラの移動
         transform.Rotate(0.0F, ry, 0.0F);//物体を左右に動かして移動
         Vector3 trans;
-
         trans = new Vector3(Mathf.Sin(this.transform.localEulerAngles.y * 3.14f / 180) * 80.0f, 80, Mathf.Cos(this.transform.localEulerAngles.y * 3.14f / 180) * 40.0f);
         GameObject rbal = GameObject.Find("");
         Vector3 pow = new Vector3(transform.position.x + trans.x / 180, transform.position.y, transform.position.z + trans.z / 30);
@@ -60,12 +60,15 @@ public class playermove : MonoBehaviour
                 switch (axes[i])
                 {
                     case 1:
+                        
                         rbal = (GameObject)Instantiate(bullet, pow, this.transform.rotation);
                         break;
                     case 2:
+                      
                         rbal = (GameObject)Instantiate(bullet2, pow, this.transform.rotation);
                         break;
                     case 3:
+                       
                         rbal = (GameObject)Instantiate(bullet3, pow, this.transform.rotation);
                         break;
                     default:
@@ -86,5 +89,6 @@ public class playermove : MonoBehaviour
                 bulletcnt--;
             }
         }
+     
     }
 }
