@@ -25,6 +25,25 @@ public class playermove : MonoBehaviour
     public static int yscore = 0;
 
 
+    int g,h;
+
+    int rcnt;
+    int bcnt;
+    int ycnt;
+    public static bool rflg;
+    public static bool bflg;
+    public static bool yflg;
+
+    public bool RedFlg;
+    public bool BlueFlg;
+    public bool YellowFlg;
+
+
+
+    GameObject Test;
+
+
+
     // Use this for initialization
     void Start()
     {
@@ -34,11 +53,37 @@ public class playermove : MonoBehaviour
         redtext.text = "redscore:0";
         bluetext.text = "bluescore:0";
         yellowtext.text = "yellowscore:0";
-        
+
+
+        rflg = false;
+        bflg = false;
+        yflg = false;
+
+        RedFlg = false;
+        BlueFlg = false;
+        YellowFlg = false;
+
+
+        //Testタグを探す(Testに設定)
+        Test = GameObject.FindWithTag("Test");
+
+
     }
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKey(KeyCode.Space))//スペースキーが押されたら
+        {
+
+           
+
+
+        }
+
+
+
+
 
         redtext.text = "Redscore:" + rscore.ToString();
         bluetext.text = "Bluescore:" + bscore.ToString();
@@ -91,4 +136,128 @@ public class playermove : MonoBehaviour
         }
      
     }
+
+
+
+
+
+    void OnTriggerEnter(Collider collision)
+    {
+        //Destroy(collision.gameObject);
+
+        if (collision.transform.tag == "Redboll" && playermove.bulletcnt < 5)
+        {
+            rflg = true;
+
+
+            Test.SendMessage("RedBall");
+
+
+
+            for (i = playermove.i, rcnt = 0; rcnt < 5; i++, rcnt++)
+            {
+
+                if (i >= 5)
+                {
+                    i = 0;
+
+                }
+                if (playermove.axes[i] == 0)
+                {
+                    playermove.axes[i] = 1;
+                    playermove.bulletcnt++;
+                    break;
+                }
+
+            }
+            Destroy(collision.gameObject);
+            // Debug.Log(playermove.Ecnt);
+
+        }
+
+
+
+
+
+           
+
+            if (collision.transform.tag == "blue" && playermove.bulletcnt < 5)
+            {
+                bflg = true;
+            Test.SendMessage("BlueBall");
+
+            /*if (Blue.gameObject.activeInHierarchy)
+            {
+                Blue.gameObject.SetActive(true);
+            }
+            else
+            {
+                Blue.gameObject.SetActive(false);
+            }*/
+
+
+
+            for (i = playermove.i, rcnt = 0; rcnt < 5; i++, rcnt++)
+                {
+
+                    if (i >= 5)
+                    {
+                        i = 0;
+
+                    }
+                    if (playermove.axes[i] == 0)
+                    {
+                        playermove.axes[i] = 1;
+                        playermove.bulletcnt++;
+                        break;
+                    }
+
+                }
+                Destroy(collision.gameObject);
+                // Debug.Log(playermove.Ecnt);
+
+            
+        }
+
+
+        if (collision.transform.tag == "yellow" && playermove.bulletcnt < 5)
+        {
+            yflg = true;
+            Test.SendMessage("YellowBall");
+            for (i = playermove.i, rcnt = 0; rcnt < 5; i++, rcnt++)
+            {
+
+                if (i >= 5)
+                {
+                    i = 0;
+
+                }
+                if (playermove.axes[i] == 0)
+                {
+                    playermove.axes[i] = 1;
+                    playermove.bulletcnt++;
+                    break;
+                }
+
+            }
+            Destroy(collision.gameObject);
+            // Debug.Log(playermove.Ecnt);
+
+        }
+
+
+
+
+
+
+
+
+
+    }
+
+
+   
+
+
+
 }
