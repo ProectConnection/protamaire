@@ -154,7 +154,7 @@ public class playermove : MonoBehaviour
 
 
 
-            for (i = playermove.i, rcnt = 0; rcnt < 5; i++, rcnt++)
+            for (rcnt = 0; rcnt < 5; i++, rcnt++)
             {
 
                 if (i >= 5)
@@ -197,7 +197,7 @@ public class playermove : MonoBehaviour
 
 
 
-            for (i = playermove.i, rcnt = 0; rcnt < 5; i++, rcnt++)
+            for (rcnt = 0; rcnt < 5; i++, rcnt++)
                 {
 
                     if (i >= 5)
@@ -224,7 +224,7 @@ public class playermove : MonoBehaviour
         {
             yflg = true;
             Test.SendMessage("YellowBall");
-            for (i = playermove.i, rcnt = 0; rcnt < 5; i++, rcnt++)
+            for (rcnt = 0; rcnt < 5; i++, rcnt++)
             {
 
                 if (i >= 5)
