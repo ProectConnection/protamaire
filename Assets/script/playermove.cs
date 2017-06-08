@@ -8,8 +8,8 @@ public class playermove : MonoBehaviour
 { 
     //弾のオブジェクト、弾数
     public GameObject bullet;//弾のオブジェクト
-    public GameObject bullet2;//弾のオブジェクト
-    public GameObject bullet3;//弾のオブジェクト
+   // public GameObject bullet2;//弾のオブジェクト
+    //public GameObject bullet3;//弾のオブジェクト
     public static float bulletcnt;//弾の所持数
    
     //配列
@@ -29,7 +29,7 @@ public class playermove : MonoBehaviour
     void Start()
     {
         i = 0;
-        j = 0;
+        //j = 0;
         bulletcnt = 0;//バレット数の初期化
         redtext.text = "redscore:0";
         bluetext.text = "bluescore:0";
@@ -65,11 +65,11 @@ public class playermove : MonoBehaviour
                         break;
                     case 2:
                       
-                        rbal = (GameObject)Instantiate(bullet2, pow, this.transform.rotation);
+                        //rbal = (GameObject)Instantiate(bullet2, pow, this.transform.rotation);
                         break;
                     case 3:
                        
-                        rbal = (GameObject)Instantiate(bullet3, pow, this.transform.rotation);
+                        //rbal = (GameObject)Instantiate(bullet3, pow, this.transform.rotation);
                         break;
                     default:
                         break;
@@ -90,5 +90,40 @@ public class playermove : MonoBehaviour
             }
         }
      
+    }
+    void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("hit");
+        GameObject[] ff = GameObject.FindGameObjectsWithTag("Blueball");
+        //Destroy(collision.gameObject);
+        if (collision.transform.tag == "Player" && playermove.bulletcnt < 5)
+        {
+            /* for (ii = playermove.i, cntt = 0; cntt < 5; ii++, cntt++)
+             {
+                 if (ii >= 5)
+                 {
+                     ii = 0;
+                 }
+                 if (playermove.axes[ii] == 0)
+                 {
+
+                     playermove.axes[ii] = 1;
+                     playermove.bulletcnt++;
+                     break;
+                 }
+             }
+             hitflg = true;
+             foreach (GameObject bulletfld in ff)
+             {*/
+            foreach (GameObject Blueball in ff)
+            {
+                GameObject.Destroy(Blueball);
+            }
+            //}
+
+
+            // Debug.Log(playermove.ycnt);
+
+        }
     }
 }
