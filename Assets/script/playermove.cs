@@ -8,8 +8,8 @@ public class playermove : MonoBehaviour
 { 
     //弾のオブジェクト、弾数
     public GameObject bullet;//弾のオブジェクト
-   // public GameObject bullet2;//弾のオブジェクト
-    //public GameObject bullet3;//弾のオブジェクト
+    public GameObject bullet2;//弾のオブジェクト
+    public GameObject bullet3;//弾のオブジェクト
     public static float bulletcnt;//弾の所持数
    
     //配列
@@ -52,7 +52,7 @@ public class playermove : MonoBehaviour
         trans = new Vector3(Mathf.Sin(this.transform.localEulerAngles.y * 3.14f / 180) * 80.0f, 80, Mathf.Cos(this.transform.localEulerAngles.y * 3.14f / 180) * 40.0f);
         GameObject rbal = GameObject.Find("");
         Vector3 pow = new Vector3(transform.position.x + trans.x / 180, transform.position.y, transform.position.z + trans.z / 30);
-        if (bulletcnt >= 1 && Input.GetKeyDown("space"))//spaceでバレットを発射
+        if (bulletcnt >= 1 && Input.GetKeyDown("space"))//spaceでバレットを発射||bulletcnt>=1 && GameObject.FindGameObjectsWithTag("UIbulet")
         {
             Debug.Log(axes[i]);
             if (axes[i] != 0)
@@ -65,11 +65,11 @@ public class playermove : MonoBehaviour
                         break;
                     case 2:
                       
-                        //rbal = (GameObject)Instantiate(bullet2, pow, this.transform.rotation);
+                        rbal = (GameObject)Instantiate(bullet2, pow, this.transform.rotation);
                         break;
                     case 3:
                        
-                        //rbal = (GameObject)Instantiate(bullet3, pow, this.transform.rotation);
+                        rbal = (GameObject)Instantiate(bullet3, pow, this.transform.rotation);
                         break;
                     default:
                         break;
