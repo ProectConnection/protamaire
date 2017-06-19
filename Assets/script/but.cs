@@ -5,22 +5,17 @@ using UnityEngine;
 public class but : MonoBehaviour {
     GameObject Button;
     
-	// Use this for initialization
-	void Start () {
-
-        //Button = GameObject.Find("Button");
+    public void clickUI()
+    {
+        playermove.flgb = true;
+    }
+   
+// Use this for initialization
+void Start () {       
+        Button = GameObject.FindWithTag("Player");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log(playermove.flgb);
-            playermove.flgb = true;  
-        }
-        else
-        {
-            playermove.flgb = false;
-        }
-	}
+    void Update()
+    {
+        playermove.flgb = false;
+    }
 }

@@ -52,7 +52,8 @@ public class playermove : MonoBehaviour
         trans = new Vector3(Mathf.Sin(this.transform.localEulerAngles.y * 3.14f / 180) * 80.0f, 80, Mathf.Cos(this.transform.localEulerAngles.y * 3.14f / 180) * 40.0f);
         GameObject rbal = GameObject.Find("");
         Vector3 pow = new Vector3(transform.position.x + trans.x / 180, transform.position.y, transform.position.z + trans.z / 30);
-        if (bulletcnt >= 1 && Input.GetKeyDown("space")||bulletcnt>=1&&flgb==true)//spaceでバレットを発射||bulletcnt>=1 && GameObject.FindGameObjectsWithTag("UIbulet")
+        if (bulletcnt>=1&&flgb==true)//spaceでバレットを発射||bulletcnt>=1 && GameObject.FindGameObjectsWithTag("UIbulet")
+                                     //bulletcnt >= 1 && Input.GetKeyDown("space")||
         {
             Debug.Log(axes[i]);
             if (axes[i] != 0)
@@ -93,7 +94,6 @@ public class playermove : MonoBehaviour
     }
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("hit");
         GameObject[] ff = GameObject.FindGameObjectsWithTag("Blueball");
         //Destroy(collision.gameObject);
         if (collision.transform.tag == "Player" && playermove.bulletcnt < 5)
