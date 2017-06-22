@@ -27,22 +27,35 @@ public class playermove : MonoBehaviour
     public static bool flgb;
     // Use this for initialization
     void Start()
-    {
-        i = 0;
-        //j = 0;
-        bulletcnt = 0;//バレット数の初期化
-        redtext.text = "redscore:0";
+    { 
+        
+        
+        
+        /*redtext.text = "redscore:0";
         bluetext.text = "bluescore:0";
-        yellowtext.text = "yellowscore:0";
+        yellowtext.text = "yellowscore:0";*/
+        //j = 0;
+
+
+
+
+        i = 0;
+        
+        bulletcnt = 0;//バレット数の初期化
+       
         flgb = false;
     }
     // Update is called once per frame
     void Update()
     {
 
-        redtext.text = "Redscore:" + rscore.ToString();
+        /*redtext.text = "Redscore:" + rscore.ToString();
         bluetext.text = "Bluescore:" + bscore.ToString();
-        yellowtext.text = "Yellowscore:" + yscore.ToString();
+        yellowtext.text = "Yellowscore:" + yscore.ToString();*/
+
+
+
+
         float dx = Input.GetAxis("Horizontal");//左右の移動
         float dz = Input.GetAxis("Vertical");//前後の移動
         transform.Translate(dx, 0.0F, dz);//transformのxとzで移動
@@ -92,38 +105,5 @@ public class playermove : MonoBehaviour
         }
      
     }
-    void OnTriggerEnter(Collider collision)
-    {
-        GameObject[] ff = GameObject.FindGameObjectsWithTag("Blueball");
-        //Destroy(collision.gameObject);
-        if (collision.transform.tag == "Player" && playermove.bulletcnt < 5)
-        {
-            /* for (ii = playermove.i, cntt = 0; cntt < 5; ii++, cntt++)
-             {
-                 if (ii >= 5)
-                 {
-                     ii = 0;
-                 }
-                 if (playermove.axes[ii] == 0)
-                 {
-
-                     playermove.axes[ii] = 1;
-                     playermove.bulletcnt++;
-                     break;
-                 }
-             }
-             hitflg = true;
-             foreach (GameObject bulletfld in ff)
-             {*/
-            foreach (GameObject Blueball in ff)
-            {
-                GameObject.Destroy(Blueball);
-            }
-            //}
-
-
-            // Debug.Log(playermove.ycnt);
-
-        }
-    }
+  
 }
